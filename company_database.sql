@@ -1,14 +1,7 @@
--- PostgreSQL script to create company database with employees table
--- File: company_database.sql
-
--- Create the company database
-CREATE DATABASE company;
-
--- Connect to the company database
-\c company;
+create schema api;
 
 -- Create employees table
-CREATE TABLE employees (
+CREATE TABLE api.employees (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
@@ -22,7 +15,7 @@ CREATE TABLE employees (
 );
 
 -- Insert 10 employee records
-INSERT INTO employees (first_name, last_name, email, phone, hire_date, job_title, department, salary, manager_id) VALUES
+INSERT INTO api.employees (first_name, last_name, email, phone, hire_date, job_title, department, salary, manager_id) VALUES
 ('John', 'Smith', 'john.smith@company.com', '+1-555-0101', '2020-01-15', 'CEO', 'Executive', 150000.00, NULL),
 ('Sarah', 'Johnson', 'sarah.johnson@company.com', '+1-555-0102', '2020-03-01', 'CTO', 'Technology', 130000.00, 1),
 ('Michael', 'Brown', 'michael.brown@company.com', '+1-555-0103', '2021-06-15', 'Senior Developer', 'Technology', 95000.00, 2),
@@ -33,3 +26,12 @@ INSERT INTO employees (first_name, last_name, email, phone, hire_date, job_title
 ('Maria', 'Garcia', 'maria.garcia@company.com', '+1-555-0108', '2023-02-14', 'Accountant', 'Finance', 60000.00, 1),
 ('Robert', 'Martinez', 'robert.martinez@company.com', '+1-555-0109', '2023-05-20', 'Junior Developer', 'Technology', 65000.00, 3),
 ('Jennifer', 'Lee', 'jennifer.lee@company.com', '+1-555-0110', '2023-09-10', 'UX Designer', 'Design', 72000.00, 2);
+
+
+create role web_anon nologin;
+
+grant usage on schema api to web_anon;
+grant select on api.todos to web_anon;
+
+create role authenticator noinherit login password 'mysecretpassword';
+grant web_anon to authenticator;
