@@ -1,6 +1,7 @@
 #!/bin/bash
 sudo -u postgres psql -f ./company_database.sql
-sudo -u postgres /usr/local/bin/postgrest &
+sudo cp postgrest.conf /etc/postgrest.conf
+sudo -u postgres /usr/local/bin/postgrest /etc/postgrest.conf &
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 \. "$HOME/.nvm/nvm.sh"
 nvm install 22
