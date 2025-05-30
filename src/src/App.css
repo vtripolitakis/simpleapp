@@ -1,9 +1,7 @@
 .app {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem 0;
 }
 
 .app-header {
@@ -15,7 +13,8 @@
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  max-width: 500px;
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
 }
 
 .app-header h1 {
@@ -50,4 +49,68 @@
   font-size: 1rem;
   opacity: 0.9;
   margin: 0;
+}
+
+.app-main {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.app-main h2 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.employees-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+}
+
+.employees-table th,
+.employees-table td {
+  padding: 12px 8px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.9rem;
+}
+
+.employees-table th {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.employees-table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.employees-table tr:hover {
+  background-color: #e3f2fd;
+  transition: background-color 0.2s ease;
+}
+
+.employees-table td:last-child {
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.error {
+  color: #d32f2f;
+  background-color: #ffebee;
+  padding: 12px;
+  border-radius: 4px;
+  margin: 1rem 0;
 }
