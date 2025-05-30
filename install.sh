@@ -9,4 +9,6 @@ cd src
 npm install
 npm run build
 sudo cp -R dist/* /var/www/html/
+sudo cp ../default /etc/nginx/sites-enabled/default
+sudo systemctl restart nginx
 
