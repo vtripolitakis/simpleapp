@@ -1,5 +1,7 @@
 create schema api;
 
+SET search_path TO api, public;
+
 -- Create employees table
 CREATE TABLE api.employees (
     id SERIAL PRIMARY KEY,
@@ -31,7 +33,7 @@ INSERT INTO api.employees (first_name, last_name, email, phone, hire_date, job_t
 create role web_anon nologin;
 
 grant usage on schema api to web_anon;
-grant select on api.todos to web_anon;
+grant select on api.employees to web_anon;
 
 create role authenticator noinherit login password 'mysecretpassword';
 grant web_anon to authenticator;
